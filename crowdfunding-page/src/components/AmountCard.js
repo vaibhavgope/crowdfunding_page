@@ -29,7 +29,7 @@ const BorderLinearProgress = withStyles((theme) => ({
     },
 }))(LinearProgress)
 
-const AmountCard = () => {
+const AmountCard = (props) => {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -48,7 +48,7 @@ const AmountCard = () => {
                                 variant="h5"
                                 style={{ fontWeight: 'bold', margin: '16 0 16' }}
                             >
-                                $89,914
+                                {`$${props.amount}`}
                             </Typography>
                             <Typography
                                 variant="p"> of $100,000 backed
@@ -60,7 +60,7 @@ const AmountCard = () => {
                                 variant="h5"
                                 style={{ fontWeight: 'bold', margin: '16 0 16' }}
                             >
-                                5,007
+                                {props.backers}
                             </Typography>
                             <Typography
                                 variant="p"> total backers
@@ -79,7 +79,7 @@ const AmountCard = () => {
                             </Typography>
                         </div>
                     </div>
-                    <BorderLinearProgress variant="determinate" value={50} />
+                    <BorderLinearProgress variant="determinate" value={(props.amount / 100000) * 100} />
                     <div style={{ height: 20 }} />
                 </Paper>
             </div >

@@ -1,8 +1,12 @@
-import React from 'react'
-import { Typography, Button, makeStyles, Paper } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Typography, Button, makeStyles, Paper, ButtonBase } from '@material-ui/core'
+import ToggleButton from '@material-ui/lab/ToggleButton';
 import logoIcon from '../images/logo-mastercraft.svg'
+import bookmarkIcon from '../images/icon-bookmark.svg';
+import bookmarkAlternate from '../images/icon-bookmark-alternate.svg';
+import SimpleModal from "./Modal/SimpleModal";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     container: {
         width: '100%',
         display: 'flex',
@@ -16,9 +20,13 @@ const useStyles = makeStyles({
         justifyContent: 'space-between',
         margin: '0 150px',
         paddingBottom: 50,
+    },
+}))
+const PageContent = (props) => {
+    const [active, setActive] = useState(false)
+    const toggleActive = () => {
+        setActive(!active)
     }
-})
-const PageContent = () => {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -60,14 +68,29 @@ const PageContent = () => {
                     </Typography>
                     <div style={{ height: 30 }} />
                     <div className={classes.buttonContainer}>
-                        <Button variant="contained" color="primary">
+                        <Button variant="contained" color="primary" size="medium" onClick={props.handleOpen} style={{ color: 'white' }}>
                             Back this project
                         </Button>
-                        <Button variant="contained" color="primary">
-                            BookMark
-                        </Button>
+                        <span className={classes.imageSrc}
+                            style={{
+                                backgroundImage: `url(${bookmarkIcon})`,
+                            }}
+                        />
+                        <button style={{ border: 'none', background: 'none' }} onClick={toggleActive}>
+                            {active ? <img src={bookmarkAlternate} alt="" /> : <img src={bookmarkIcon} alt="" />}
+                        </button>
                     </div>
                 </Paper>
+                <SimpleModal
+                    open={props.open}
+                    handleClose={props.handleClose}
+                    handleChange={props.handleChange}
+                    handleInputChange={props.handleInputChange}
+                    selectedValue={props.selectedValue}
+                    handleSubmit={props.handleSubmit}
+                    data={props.data}
+                    selectedAmount={props.selectedAmount}
+                />
             </div >
         </React.Fragment>
     )
