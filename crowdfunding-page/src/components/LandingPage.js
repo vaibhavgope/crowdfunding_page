@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AppBar, Toolbar, makeStyles, Typography, Button, Paper } from '@material-ui/core';
+import { AppBar, Toolbar, makeStyles, Button } from '@material-ui/core';
 import MainCard from './MainCard';
 import AmountCard from './AmountCard';
 import heroImage from '../images/image-hero-desktop.jpg'

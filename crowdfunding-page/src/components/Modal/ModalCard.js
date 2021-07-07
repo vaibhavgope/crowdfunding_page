@@ -50,15 +50,21 @@ const ModalCard = (props) => {
                             left
                         </div>
                     </div>}
-                {props.selectedValue === props.name && props.amount &&
+                {props.selectedValue === props.name ? (props.amount ?
                     <CardActions>
-                        <TextField id="outlined-basic" variant="outlined" size="small" defaultValue={props.amount} value={props.selectedAmount} onChange={props.handleInputChange} InputProps={{
-                            startAdornment: <InputAdornment position="start">$</InputAdornment>,
-                        }} />
+                        <TextField id="outlined-basic"
+                            variant="outlined" size="small"
+                            defaultValue={props.amount}
+                            value={props.selectedAmount}
+                            onChange={props.handleInputChange}
+                            InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment> }} />
                         {props.selectedAmount < props.amount ?
                             <Button size="small" value={props.name} variant="contained" color="primary" style={{ color: 'white', borderRadius: '10' }} onClick={props.handleSubmit} disabled>Continue</Button> :
                             <Button size="small" value={props.name} variant="contained" color="primary" style={{ color: 'white', borderRadius: '10' }} onClick={props.handleSubmit}>Continue</Button>}
-                    </CardActions>}
+                    </CardActions>
+                    :
+                    <Button size="small" value={props.name} variant="contained" color="primary" style={{ color: 'white', borderRadius: '10' }} onClick={props.handleSubmit}>Continue</Button>
+                ) : ""}
             </div>
         </Card>
     )

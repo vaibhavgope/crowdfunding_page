@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, makeStyles, Paper, ModalCard } from '@material-ui/core'
+import { Typography, makeStyles, Paper } from '@material-ui/core'
 import SingleInfoCard from './SingleInfoCard'
 
 const useStyles = makeStyles({

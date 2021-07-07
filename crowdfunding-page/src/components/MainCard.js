@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Typography, Button, makeStyles, Paper, ButtonBase } from '@material-ui/core'
-import ToggleButton from '@material-ui/lab/ToggleButton';
+import { Typography, Button, makeStyles, Paper } from '@material-ui/core'
 import logoIcon from '../images/logo-mastercraft.svg'
 import bookmarkIcon from '../images/icon-bookmark.svg';
 import bookmarkAlternate from '../images/icon-bookmark-alternate.svg';

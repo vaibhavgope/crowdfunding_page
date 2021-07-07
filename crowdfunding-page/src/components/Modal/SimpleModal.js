@@ -45,6 +45,13 @@ const SimpleModal = (props) => {
                     <Typography variant='body2'>
                         Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
                     </Typography>
+                    <ModalCard handleChange={props.handleChange}
+                        selectedValue={props.selectedValue}
+                        name="Pledge with no reward" summary="Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email."
+                        handleInputChange={props.handleInputChange}
+                        handleSubmit={props.handleSubmit}
+                        selectedAmount={props.selectedAmount}
+                    />
                     {props.data.map((e) => {
                         return (<ModalCard handleChange={props.handleChange}
                             selectedValue={props.selectedValue}
