@@ -1,10 +1,9 @@
 import './App.css'
 import React from 'react'
 import LandingPage from './components/LandingPage';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core';
-import { cyan } from '@material-ui/core/colors';
+import { ThemeProvider, createTheme } from '@material-ui/core';
 
-const theme = createMuiTheme({
+const theme = createTheme({
     typography: {
         allVariants: {
             color: 'hsl(200, 15%, 8%)'
@@ -12,8 +11,27 @@ const theme = createMuiTheme({
         fontFamily: 'Roboto'
     },
     palette: {
-        primary: { main: cyan[500] },
-        secondary: { main: cyan[700] },
+        primary: {
+            main: 'hsl(176, 50%, 47%)'
+        },
+        secondary: {
+            main: 'hsl(176, 72%, 28%)'
+        },
+    },
+    overrides: {
+        MuiButton: {
+            root: {
+                color: 'white',
+                borderRadius: '100px',
+            },
+            contained: {
+                color: 'white',
+                backgroundColor: 'hsl(176, 50%, 47%)',
+                '&:hover': {
+                    backgroundColor: 'hsl(176, 72%, 28%)'
+                },
+            }
+        },
     },
 });
 function App() {

@@ -2,23 +2,40 @@ import React from 'react'
 import { Typography, makeStyles, Paper } from '@material-ui/core'
 import SingleInfoCard from './SingleInfoCard'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     container: {
+        position: 'relative',
+        top: 30,
         width: '100%',
         display: 'flex',
         alignItems: 'left',
         justifyContent: 'center',
-        top: 320,
-        position: 'relative',
         textAlign: 'left',
     },
     title: { fontWeight: 'bold', margin: '16' },
     card: {
-        maxWidth: '70%',
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '90%',
+            padding: 5
+        },
+        [theme.breakpoints.up('md')]: {
+            maxWidth: '70%',
+            padding: 20
+        },
         margin: 'auto',
         borderRadius: '10px',
+    },
+    paper: {
+        width: '100%',
+        borderRadius: 15,
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '90%',
+        },
+        [theme.breakpoints.up('md')]: {
+            maxWidth: '70%',
+        },
     }
-})
+}))
 
 const InfoCard = (props) => {
     const classes = useStyles();
@@ -27,20 +44,15 @@ const InfoCard = (props) => {
             < div
                 className={classes.container}
             >
-                <Paper elevation={3}
-                    style={{
-                        width: '100%',
-                        maxWidth: '70%',
-                        borderRadius: 15,
-                    }}>
-                    <div style={{ margin: 'auto', maxWidth: '70%', padding: 20 }}>
+                <Paper elevation={1} className={classes.paper}>
+                    <div className={classes.card}>
                         <Typography
                             variant="h6"
                             className={classes.title}
                         >
                             About this project
                         </Typography>
-                        <Typography variant="body">
+                        <Typography variant="body" color='textSecondary'>
                             The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen
                             to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve
                             your posture and make you more comfortable while at work, helping you stay focused on the task at hand.

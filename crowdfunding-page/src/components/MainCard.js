@@ -11,16 +11,41 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: -120,
-        position: 'absolute',
+        position: 'relative',
     },
     buttonContainer: {
+        position: 'relative',
         display: 'flex',
         justifyContent: 'space-between',
-        margin: '0 150px',
+        margin: '0 10%',
         paddingBottom: 50,
     },
+    paper: {
+        width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '90%',
+        },
+        [theme.breakpoints.up('md')]: {
+            maxWidth: '70%',
+        },
+        borderRadius: 15,
+    },
+    bookmarkBtn: {
+        border: 'none',
+        background: 'none'
+    },
+    middleLogo: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: -30,
+    },
+    centerText: {
+        margin: 16,
+        textAlign: 'center'
+    }
 }))
+
 const PageContent = (props) => {
     const [active, setActive] = useState(false)
     const toggleActive = () => {
@@ -32,27 +57,17 @@ const PageContent = (props) => {
             < div
                 className={classes.container}
             >
-                <Paper elevation={3}
-                    style={{
-                        width: '100%',
-                        maxWidth: '70%',
-                        borderRadius: 15,
-                    }}>
+                <Paper elevation={1} className={classes.paper}>
                     <div
-                        style={{
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            marginTop: -30,
-                        }}
+                        className={classes.middleLogo}
                     >
                         <img src={logoIcon} alt="" />
                     </div>
                     <div style={{ height: 20 }} />
                     <Typography
                         variant="h4"
-                        //color="textSecondary"
-                        style={{ fontWeight: 'bold', margin: 16, textAlign: 'center' }}
+                        style={{ fontWeight: 'bold' }}
+                        className={classes.centerText}
                     >
                         A solution for every project
                     </Typography>
@@ -60,14 +75,14 @@ const PageContent = (props) => {
                         variant="h5"
                         component="div"
                         color="textSecondary"
-                        style={{ margin: 16, textAlign: 'center' }}
+                        className={classes.centerText}
                     >
                         Choose from 3 different starter kits. From a basic one to a full
                         featured application.
                     </Typography>
                     <div style={{ height: 30 }} />
                     <div className={classes.buttonContainer}>
-                        <Button variant="contained" color="primary" size="medium" onClick={props.handleOpen} style={{ color: 'white' }}>
+                        <Button variant="contained" size="medium" onClick={props.handleOpen}>
                             Back this project
                         </Button>
                         <span className={classes.imageSrc}
@@ -75,7 +90,7 @@ const PageContent = (props) => {
                                 backgroundImage: `url(${bookmarkIcon})`,
                             }}
                         />
-                        <button style={{ border: 'none', background: 'none' }} onClick={toggleActive}>
+                        <button className={classes.bookmarkBtn} onClick={toggleActive}>
                             {active ? <img src={bookmarkAlternate} alt="" /> : <img src={bookmarkIcon} alt="" />}
                         </button>
                     </div>

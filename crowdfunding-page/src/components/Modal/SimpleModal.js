@@ -1,14 +1,21 @@
 import React from 'react'
-import { Modal, Fade, makeStyles, Backdrop, Typography } from '@material-ui/core'
+import { Modal, Fade, makeStyles, Backdrop, Typography, IconButton } from '@material-ui/core'
 import ModalCard from './ModalCard'
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        maxWidth: '40%',
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '90%',
+        },
+        [theme.breakpoints.up('md')]: {
+            maxWidth: '40%',
+        },
         margin: 'auto',
+
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
@@ -18,7 +25,16 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
         borderRadius: 20,
+        position: 'relative',
+        [theme.breakpoints.down('sm')]: {
+            overflow: 'scroll',
+        },
     },
+    button: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+    }
 }))
 
 const SimpleModal = (props) => {
@@ -39,6 +55,9 @@ const SimpleModal = (props) => {
         >
             <Fade in={props.open}>
                 <div className={classes.paper}>
+                    <IconButton aria-label="close" className={classes.button} size="small" onClick={props.handleClose}>
+                        <CloseIcon fontSize="inherit" />
+                    </IconButton>
                     <Typography variant='h6' className={classes.title}>
                         Back this project
                     </Typography>
